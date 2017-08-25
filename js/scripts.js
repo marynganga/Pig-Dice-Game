@@ -1,5 +1,6 @@
 //Global Variables
 var player1, player2;
+
 //Back-End Logic
 //Constructor function for a player
 function Player(name, turnTotal, overallScore) {
@@ -11,27 +12,30 @@ function Player(name, turnTotal, overallScore) {
 //Funtion on what is to happen when the dice is rolled.
 Player.prototype.roll = function () {
     var randomNo = Math.floor((Math.random() * 6) + 1);
-   
-         if (randomNo === 1) {
-              this.turnTotal = 0;
-         console.log(this.turnTotal);
+
+    if (randomNo === 1) {
+        this.turnTotal = 0;
+        console.log(this.turnTotal);
         return alert("Oops you got a 1. Your turn is over");
-      } else {
-          this.turnTotal += randomNo;
-          console.log(this.turnTotal);
+    } else {
+        this.turnTotal += randomNo;
+        console.log(this.turnTotal);
     };
-     return randomNo;
+    return randomNo;
 };
 //Function on what is to happen when a player holds the game.
-//Player.prototype.hold = function(){
-//    this.overallScore += turnTotal;
-//}
+Player.prototype.hold = function () {
+    this.overallScore += this.turnTotal;
+    this.turnTotal = 0;
+     return this.overallScore;
+   
+};
 
 //Reset the fields
 function resetFields() {
     $("input#player1Name").val("");
     $("input#player2Name").val("");
-}
+};
 
 
 //Front End Logic
@@ -58,18 +62,24 @@ $(document).ready(function () {
         $(".player2NameOutput").text(player2.name);
         //Clear the input fields
         resetFields();
-        });
+    });
 
-        $('.roll').click(function (event) {
-            event.preventDefault();
-            //call the function to generate random numbers
-            //display the rolled dice number
-            $('.diceroll1').text(player1.roll());
-            //display the turn score (temporary score)
-            $('.turnScore1').text(player1.turnTotal);
-            //display the overall score            $('.overralScore1').text(player1.totalScore);
+    $('.roll').click(function (event) {
+        event.preventDefault();
+        //call the function to generate random numbers
+        //display the rolled dice number
+        $('.diceroll1').text(player1.roll());
+        //display the turn score (temporary score)
+        $('.turnScore1').text(player1.turnTotal);
+
+    });
     
-        });
-
+     $('.hold1').click(function (event) {
+        event.preventDefault();
+    //call the function to add the turn score to the overall score
+         player1.hold();
+       //display the overall score
+        $('.overallScore1').text(player1.overallScore);  
+     });
 
 });
