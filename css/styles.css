@@ -17,14 +17,9 @@ body{
     margin: 0px;
 }
 #rulesHeader:hover{
-    color: antiquewhite;
+    color:blueviolet;
 }
-#rulesSection img{
-/*
-  width: 100px;
-    height: 100px;
-*/
-}
+
 li, p{
     font-size: 16px;
 }
