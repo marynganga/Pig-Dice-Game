@@ -1,43 +1,78 @@
 //Back-End Logic
-
-//Constructor function for the player's names
-function Players (player1,player2){
-    this.player1 = player1;
-    this.player2 = player2;
+//Constructor function for a player
+function Player(name, diceRoll, totalScore) {
+    this.name = name;
+    this.diceRoll = 0;
+    this.totalScore = 0;
 }
-//
-//Players.prototype.printNames = function(this){
-//function printNames(someNames){
-//var name1=$(".player1NameOutput").text(someNames.player1);
-//   var name2 = $(".player2NameOutput").text(someNames.player2);
-//    return name1 + name2;
-//    
-//}
+
+//Funtion on what is to happen when the dice is rolled.
+Player.prototype.roll = function () {
+    var randomNo = Math.floor((Math.random() * 6) + 1);
+    return randomNo;
+    console.log(randomNo);
+
+    if (randomNo > 1) {
+        this.totalScore += randomNo;
+        alert(this.totalScore += randomNo);
+        return this.totalScore; 
+    } else {
+        this.totalScore = 0;
+        return this.totalScore + alert("Oops you got a 1. Your turn is over.");
+
+    }
+};
+
+//Reset the fields
+function resetFields() {
+    $("input#player1Name").val("");
+    $("input#player2Name").val("");
+}
 
 
 //Front End Logic
-$(document).ready(function(){
+$(document).ready(function () {
     //Makes the 'Rules' title clickeable and the rules themselves hideable.
-    $("#rulesHeader").click(function(){
+    $("#rulesHeader").click(function () {
         $("#rulesDefinitions").toggle();
     });
-    
-     $("#playerNames").submit(function(event){
-         console.log("1");
+    //Actions when player enters name
+    $("#playerNames").submit(function (event) {
+
         event.preventDefault();
-         
         //Store the players names in variables and output them.
         var gamer1 = $("#player1Name").val();
-           console.log(gamer1);
-         var gamer2 = $("#player2Name").val();
-           console.log(gamer2);
+        console.log(gamer1);
+        var gamer2 = $("#player2Name").val();
+        console.log(gamer2);
+        //Put the names into an object using the constructor Players
+        var player1 = new Player(gamer1);
+        var player2 = new Player(gamer2);
+        console.log(player1, player2);
+        //Output the names into each appropriate section
+        $(".player1NameOutput").text(player1.name);
+        $(".player2NameOutput").text(player2.name);
+        //Clear the input fields
+        resetFields();
+    //});
+ 
+    $('.roll').click(function (event) {
+        event.preventDefault();
+        //call the function to generate random numbers
+        player1.roll();
+        console.log(player1.roll());
         
-        var gamers = new Players(gamer1,gamer2);
-   console.log(gamers);
-    console.log(gamers.player1 + gamers.player2);
-    $(".player1NameOutput").text(gamers.player1);
-    $(".player2NameOutput").text(gamers.player2);     
-    })
-    
-    
-})
+        //display the turn score
+        $('.turnScore1').text(player1.diceRoll);
+        console.log(player1.diceRoll);
+        //Calculate the total score
+
+        //display the total score
+        $('.totalScore1').text(player1.totalScore);
+        console.log(player1.totalScore);
+    });
+
+});
+
+
+});
