@@ -1,8 +1,8 @@
 //Back-End Logic
 //Constructor function for a player
-function Player(name, diceRoll, totalScore) {
+function Player(name, turnTotal, totalScore) {
     this.name = name;
-    this.diceRoll = 0;
+    this.turnTotal = 0;
     this.totalScore = 0;
 }
 
@@ -10,18 +10,33 @@ function Player(name, diceRoll, totalScore) {
 Player.prototype.roll = function () {
     var randomNo = Math.floor((Math.random() * 6) + 1);
     return randomNo;
-    console.log(randomNo);
-
-    if (randomNo > 1) {
-        this.totalScore += randomNo;
-        alert(this.totalScore += randomNo);
-        return this.totalScore; 
-    } else {
-        this.totalScore = 0;
-        return this.totalScore + alert("Oops you got a 1. Your turn is over.");
-
-    }
+    this.turnTotal += randomNo;
+    this.turnTotal;
+    
+//     if (randomNo > 1) {
+//     this.totalScore += this.diceRoll;
+//      console.log(this.totalScore);
+//  } else {
+//      this.totalScore = 0;
+//     console.log(this.totalScore);
+//    alert("Oops you got a 1. Your turn is over");
+//    
+//};
 };
+//function findTotalScore(){
+//    if (randomNo > 1) {
+//        this.totalScore += this.diceRoll;
+//        alert(this.totalScore);
+//        return this.totalScore;
+//        console.log(this.totalScore);
+//    } else {
+//        this.totalScore = 0;
+//        return this.totalScore;
+//        console.log(this.totalScore);
+//        alert("Oops you got a 1. Your turn is over.");
+//
+//    }
+//}
 
 //Reset the fields
 function resetFields() {
@@ -54,25 +69,21 @@ $(document).ready(function () {
         $(".player2NameOutput").text(player2.name);
         //Clear the input fields
         resetFields();
-    //});
- 
-    $('.roll').click(function (event) {
-        event.preventDefault();
-        //call the function to generate random numbers
-        player1.roll();
+        //});
+
+        $('.roll').click(function (event) {
+            event.preventDefault();
+            //call the function to generate random numbers
+            //display the turn score
+     $('.diceroll1').text(player1.roll());
         console.log(player1.roll());
-        
-        //display the turn score
-        $('.turnScore1').text(player1.diceRoll);
-        console.log(player1.diceRoll);
-        //Calculate the total score
 
-        //display the total score
-        $('.totalScore1').text(player1.totalScore);
-        console.log(player1.totalScore);
+            //display the total score
+//            $('.totalScore1').text(player1.totalScore);
+//         console.log(player1.totalScore);
+      });
+
     });
-
-});
 
 
 });
