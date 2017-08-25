@@ -1,0 +1,57 @@
+body{
+    font-size: 16px;
+}
+.jumbotron{
+    background-color: #DDC7CA;
+}
+#rulesSection{
+    background-color: #FADED7;
+    margin: auto;
+    padding: 5px;
+    
+}
+#rulesHeader{
+/*  background-color: aliceblue;*/
+    color: black;
+    padding: 0px;
+    margin: 0px;
+}
+#rulesHeader:hover{
+    color: antiquewhite;
+}
+#rulesSection img{
+/*
+  width: 100px;
+    height: 100px;
+*/
+}
+li, p{
+    font-size: 16px;
+}
+#playingForm{
+    background-color: #DDC7CA;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+}
+
+form .btn-primary{
+    margin: auto;
+     text-align: center;
+    margin: 10px auto;
+    left: 45%;
+}
+
+.player1Area,.player2Area{
+    background-color: #FADED7;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+        padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+
+}
+#gamingArea{
+    width: 100%;
+    margin: 10px auto;
+}

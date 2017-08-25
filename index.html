@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -15,13 +15,15 @@
 <body class="container-fluid">
     <header class="jumbotron">
         <section id="heading">
-            <h1>Pig Dice Game</h1>
+            <h1><img src="assets/images/img3.png" alt="Website Logo">Pig Dice Game</h1>
         </section>
-        <section id="rules" class="navbar navbar-default">
-            <div class="navbar-header">
-                <p class="navbar-brand" id="rules">Rules</p>
+        <section id="rulesSection">
+            <div id="rulesHeader">
+                <h2 id="rules">Rules</h2>
             </div>
-            <div id="rule-definitions" class="nav navbar-nav">
+            <div id="rulesDefinitions" class="row">
+            <div class="col-md-9">
+            
                 <p>This is a simple dice game where two players have the chance to roll the dice to try and achieve a score of 100. Each player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold".</p>
 
                 <p>The rules of the game are:</p>
@@ -29,8 +31,12 @@
                     <li>When a player rolls a 1, their total score reverts to 0 and it becomes the next player's turn.</li>
                     <li>When the player rolls a 2 - 6, the score is added to their turn total and they can continue to play.</li>
                     <li>When the player chooses to "hold", their turn total is added to their total score, and it becomes the next player's turn.</li>
-                    The player who first scores 100 or more points wins.
+                    <li>The player who first scores 100 or more points wins.</li>
                 </ul>
+                </div>
+                <div class="col-md-3">
+                <img src="assets/images/img4.png" alt="Image">
+                </div>
             </div>
         </section>
     </header>
@@ -48,25 +54,25 @@
                         <input type="text" id="player2Name" class="form-control">
                     </section>
                 </div>
-                <button type="submit">Play</button>
+                <button type="submit" class="btn btn-primary">Play</button>
             </form>
         </section>
         <section id="gamingArea" class="row">
-            <section class="col-md-6">
+            <section class="col-md-6 player1Area">
                 <h4 class="player1NameOutput"></h4>
                 <img src="assets/images/img10.jpg" alt="Image Icon for Player 1">
-                <p class="turnScore"></p>
-                <p class="totalScore"></p>
-                <button class="roll">ROLL</button>
-                <button class="hold">HOLD</button>
+                <p>Turn Score: <span class="turnScore"></span></p>
+                <p>Total Score <span class="totalScore"></span></p>
+                <button class="roll btn btn-primary">ROLL</button>
+                <button class="hold btn btn-primary">HOLD</button>
             </section>
-            <section class="col-md-6">
+            <section class="col-md-6 player2Area">
                 <h4 class="player2NameOutput"></h4>
                 <img src="assets/images/img12.jpg" alt="Image Icon for Player 2">
-                <p class="turnScore"></p>
-                <p class="totalScore"></p>
-                <button class="roll">ROLL</button>
-                <button class="hold">HOLD</button>
+               <p>Turn Score: <span class="turnScore"></span></p>
+                <p>Total Score <span class="totalScore"></span></p>
+                <button class="roll btn btn-primary">ROLL</button>
+                <button class="hold btn btn-primary">HOLD</button>
             </section>
         </section>
     </main>
