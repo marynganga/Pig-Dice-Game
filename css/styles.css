@@ -1,52 +1,85 @@
-body{
+/*Styles for the whole body*/
+.container {
     font-size: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0px;
+    background-image: url(../assets/images/img15.jpg);
+    background-size: cover;
 }
-.jumbotron{
-    background-color: #DDC7CA;
+/*Styles for the Title Section*/
+#header {
+    background-color: #000b29;
+    padding: 10px;
+    margin: 0px;
+    width: 100%;
+    text-align: center;
 }
-#rulesSection{
-    background-color: #FADED7;
+#header img {
+    width: 300px;
+    height: 150px;
+    padding-right: 30px;
+}
+#header h1 {
+    font-size: 45px;
+    color: white;
+}
+/*Styles for the Rules Section*/
+#rulesSection {
+    background-color: rgba(238,238,238,0.4);
     margin: auto;
-    padding: 5px;
-    
+    box-shadow: 0px 0px 10px #ccc;
+    padding: 5px 10px 5px 10px;
+    width: 70%;
+    border: 2px solid #ddd;
+    border-radius: 6px;
 }
-#rulesHeader{
-/*  background-color: aliceblue;*/
+
+#rulesHeader {
+    /*  background-color: aliceblue;*/
     color: black;
     padding: 0px;
     margin: 0px;
 }
-#rulesHeader:hover{
-    color:blueviolet;
+
+#rulesHeader:hover {
+    color: blueviolet;
 }
 
-li, p{
+li,
+p {
     font-size: 16px;
 }
-#playingForm{
-    background-color: #DDC7CA;
-    padding: 10px;
+/*Styles for the Players Names Form*/
+#playingForm {
+    background-color: rgba(238,238,238,0.4);
+    margin: auto;
+    box-shadow: 0px 0px 10px #ccc;
+    padding: 5px 10px 5px 10px;
+    width: 70%;
     border: 2px solid #ddd;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
-form .btn-primary{
+.btn-primary {
     margin: auto;
-     text-align: center;
+    text-align: center;
     margin: 10px auto;
     left: 45%;
 }
 
-.player1Area,.player2Area{
-    background-color: #FADED7;
+.player1Area,
+.player2Area {
+    background-color: transparent;
     border: 2px solid #ddd;
     border-radius: 4px;
-        padding-bottom: 20px;
+    padding-bottom: 20px;
     padding-top: 20px;
     text-align: center;
-
 }
-#gamingArea{
-    width: 100%;
+/*Styles for the Gaming Section*/
+#gamingArea {
+    display: none;
+    width: 80%;
     margin: 10px auto;
 }

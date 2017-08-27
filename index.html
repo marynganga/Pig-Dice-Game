@@ -12,75 +12,66 @@
     <title>Pig Dice Game</title>
 </head>
 
-<body class="container-fluid">
-    <header class="jumbotron">
-        <section id="heading">
-            <h1><img src="assets/images/img3.png" alt="Website Logo">Pig Dice Game</h1>
-        </section>
-        <section id="rulesSection">
-            <div id="rulesHeader">
-                <h2 id="rules">Rules</h2>
+<body class="container">
+    <!-- The Title Section with a logo and page name  -->
+    <div id="header">
+        <h1><img src="assets/images/img3.png" alt="Website Logo"> Pig Dice Game</h1>
+    </div>
+    <!-- The rules for game play   -->
+    <section id="rulesSection">
+        <div id="rulesHeader">
+            <h3 id="rules">Rules</h3>
+        </div>
+        <div id="rulesDefinitions">
+            <p>This is a simple dice game where two players have the chance to roll the dice to try and achieve a score of 100.</p>
+            <p>The rules of the game are:</p>
+            <ul>
+                <li>When the player rolls a 2 - 6, the dice score is added to their turn total and they can continue to play.</li>
+                <li>When a player rolls a 1, their total score reverts to 0 and it becomes the next player's turn.</li>
+                <li>When the player chooses to "hold"(pass their turn), their turn total is added to their total score, and it becomes the next player's turn.</li>
+                <li>The player who first scores 100 or more points wins the game.</li>
+            </ul>
+            <p>Try your luck!!!</p>
+        </div>
+    </section>
+    <!--The players names input form-->
+    <section id="playingForm">
+        <form id="playerNames" class="form-group">
+            <h3>Insert your names to play:</h3>
+            <div class="row">
+                <section class="col-md-6">
+                    <label for="player1">Player1</label>
+                    <input type="text" id="player1Name" class="form-control">
+                </section>
+                <section class="col-md-6">
+                    <label for="player1">Player2</label>
+                    <input type="text" id="player2Name" class="form-control">
+                </section>
             </div>
-            <div id="rulesDefinitions" class="row">
-            <div class="col-md-9">
-            
-                <p>This is a simple dice game where two players have the chance to roll the dice to try and achieve a score of 100. Each player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold".</p>
-
-                <p>The rules of the game are:</p>
-                <ul>
-                    <li>When a player rolls a 1, their total score reverts to 0 and it becomes the next player's turn.</li>
-                    <li>When the player rolls a 2 - 6, the score is added to their turn total and they can continue to play.</li>
-                    <li>When the player chooses to "hold", their turn total is added to their total score, and it becomes the next player's turn.</li>
-                    <li>The player who first scores 100 or more points wins.</li>
-                </ul>
-                </div>
-                <div class="col-md-3">
-                <img src="assets/images/img4.png" alt="Image">
-                </div>
-            </div>
+            <button type="submit" class="btn btn-primary" id="playButton">Play</button>
+        </form>
+    </section>
+    <!-- The gaming area for player 1 and 2-->
+    <section id="gamingArea" class="row">
+        <section class="col-md-6 player1Area">
+            <h4 class="player1NameOutput"></h4>
+            <img src="assets/images/img10.jpg" alt="Image Icon for Player 1">
+            <p>Dice Roll: <span class="diceRoll1"></span></p>
+            <p>Turn Score: <span class="turnScore1"></span></p>
+            <p>Overall Score: <span class="overallScore1"></span></p>
+            <button class="roll1 btn btn-primary">ROLL</button>
+            <button class="hold1 btn btn-primary">HOLD</button>
         </section>
-    </header>
-    <main>
-        <section id="playingForm">
-            <form id="playerNames" class="form-group">
-                <h3>Insert your names to play:</h3>
-                <div class="row">
-                    <section class="col-md-6">
-                        <label for="player1">Player1</label>
-                        <input type="text" id="player1Name" class="form-control">
-                    </section>
-                    <section class="col-md-6">
-                        <label for="player1">Player2</label>
-                        <input type="text" id="player2Name" class="form-control">
-                    </section>
-                </div>
-                <button type="submit" class="btn btn-primary" id="playButton">Play</button>
-            </form>
+        <section class="col-md-6 player2Area">
+            <h4 class="player2NameOutput"></h4>
+            <img src="assets/images/img12.jpg" alt="Image Icon for Player 2">
+            <p>Dice Roll: <span class="diceRoll2"></span></p>
+            <p>Turn Score: <span class="turnScore2"></span></p>
+            <p>Overall Score: <span class="overallScore2"></span></p>
+            <button class="roll2 btn btn-primary">ROLL</button>
+            <button class="hold2 btn btn-primary">HOLD</button>
         </section>
-        <section id="gamingArea" class="row">
-            <section class="col-md-6 player1Area">
-                <h4 class="player1NameOutput"></h4>
-                <img src="assets/images/img10.jpg" alt="Image Icon for Player 1">
-                <p>Dice Roll: <span class="diceRoll1"></span></p>
-                <p>Turn Score: <span class="turnScore1"></span></p>
-                 <p>Overall Score: <span class="overallScore1"></span></p>
-                <button class="roll1 btn btn-primary">ROLL</button>
-                <button class="hold1 btn btn-primary">HOLD</button>
-            </section>
-            <section class="col-md-6 player2Area">
-                <h4 class="player2NameOutput"></h4>
-                <img src="assets/images/img12.jpg" alt="Image Icon for Player 2">
-               <p>Dice Roll: <span class="diceRoll2"></span></p>
-                <p>Turn Score: <span class="turnScore2"></span></p>
-                 <p>Overall Score: <span class="overallScore2"></span></p>
-                <button class="roll2 btn btn-primary">ROLL</button>
-                <button class="hold2 btn btn-primary">HOLD</button>
-            </section>
-        </section>
-    </main>
-    <article id="winnerAnnounced"
-    ></article>
-
+    </section>
 </body>
 
 </html>
