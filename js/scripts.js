@@ -33,7 +33,7 @@ Player.prototype.hold = function () {
     } else {
         alert("Your turn is over!");
     }
-return this.overallScore;
+    return this.overallScore;
 };
 
 //Reset the form input fields
@@ -77,7 +77,7 @@ $(document).ready(function () {
         //call the function to generate random numbers
         player1.roll()
         //display the rolled dice number
-        $('.diceroll1').text(player1.diceRoll);
+        $('.diceRoll1').text(player1.diceRoll);
         //display the turn score (temporary score)
         $('.turnScore1').text(player1.turnTotal);
     });
@@ -87,7 +87,7 @@ $(document).ready(function () {
         //call the function to generate random numbers
         player2.roll()
         //display the rolled dice number
-        $('.diceroll2').text(player2.diceRoll);
+        $('.diceRoll2').text(player2.diceRoll);
         //display the turn score (temporary score)
       $('.turnScore2').text(player2.turnTotal);
     });
@@ -98,9 +98,11 @@ $(document).ready(function () {
         //call the function to add the turn score to the overall score
         player1.hold();
         //display the overall score
-        $('.overallScore1').text(player1.overallScore);
+  $('.overallScore1').text(player1.overallScore);
         //Clear turn score and total score
-       
+       $('.diceRoll1').text("");
+        $('.turnScore1').text("");
+        
     });
     //hold button for player2
     $('.hold2').click(function (event) {
@@ -109,7 +111,9 @@ $(document).ready(function () {
         player2.hold();
         //display the overall score
         $('.overallScore2').text(player2.overallScore);
-         //Clear turn score and total score
+          //Clear turn score and total score
+       $('.diceRoll2').text("");
+        $('.turnScore2').text("");
 
     });
 
