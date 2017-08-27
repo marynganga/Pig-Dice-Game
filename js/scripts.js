@@ -3,8 +3,9 @@ var player1, player2;
 
 //Back-End Logic
 //Constructor function for a player
-function Player(name, turnTotal, overallScore) {
+function Player(name, turnTotal,diceRoll, overallScore) {
     this.name = name;
+    this.diceRoll = 0;
     this.turnTotal = 0;
     this.overallScore = 0;
 }
@@ -12,7 +13,7 @@ function Player(name, turnTotal, overallScore) {
 //Funtion on what is to happen when the dice is rolled.
 Player.prototype.roll = function () {
     var randomNo = Math.floor((Math.random() * 6) + 1);
-
+    this.diceRoll = randomNo;
     if (randomNo === 1) {
         this.turnTotal = 0;
         console.log(this.turnTotal);
@@ -21,7 +22,7 @@ Player.prototype.roll = function () {
         this.turnTotal += randomNo;
         console.log(this.turnTotal);
     };
-    return randomNo;
+    return this.diceRoll;
 };
 //Function on what is to happen when a player holds the game.
 Player.prototype.hold = function () {
@@ -70,8 +71,9 @@ $(document).ready(function () {
     $('.roll1').click(function (event) {
         event.preventDefault();
         //call the function to generate random numbers
+        player1.roll()
         //display the rolled dice number
-        $('.diceroll1').text(player1.roll());
+        $('.diceroll1').text(player1.diceRoll);
         //display the turn score (temporary score)
         $('.turnScore1').text(player1.turnTotal);
 
@@ -80,8 +82,9 @@ $(document).ready(function () {
     $('.roll2').click(function (event) {
         event.preventDefault();
         //call the function to generate random numbers
+        player2.roll()
         //display the rolled dice number
-        $('.diceroll2').text(player2.roll());
+        $('.diceroll2').text(player2.diceRoll);
         //display the turn score (temporary score)
         $('.turnScore2').text(player2.turnTotal);
 
