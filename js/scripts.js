@@ -2,13 +2,23 @@
 var player1, player2;
 //Back-End Logic
 //Constructor function for a player
-function Player(name, turnTotal, diceRoll, overallScore) {
+function Player(name, turnTotal, diceRoll, overallScore, active) {
     this.name = name;
     this.diceRoll = 0;
     this.turnTotal = 0;
     this.overallScore = 0;
+    this.active = active;
 }
-
+//Function to disable and enable gaming areas according to which player is active
+function activeUser() {
+    if (player1.active === true || player2.active === false) {
+     $('.player1Area').children().prop('disabled', false);
+        $('.player2Area').children().prop('disabled', true);
+    } else {
+      $('.player1Area').children().prop('disabled', true);
+    $('.player2Area').children().prop('disabled', false);
+    };
+};
 //Funtion on what is to happen when the dice is rolled.
 Player.prototype.roll = function () {
     var randomNo = Math.floor((Math.random() * 6) + 1);
@@ -16,17 +26,20 @@ Player.prototype.roll = function () {
     if (randomNo === 1) {
         this.turnTotal = 0;
         this.diceRoll = 1;
-        //console.log(this.turnTotal);
+        console.log(this.turnTotal);
+        this.active = false;
+        activeUser();
+        console.log('Having rolled a 1, activity is: '+this.active);
         return alert("Oops you got a 1. Your turn is over!");
-        
     } else {
         this.turnTotal += randomNo;
-        //console.log(this.turnTotal);
+        console.log(this.turnTotal);
     };
     return this.diceRoll;
 };
 //Function on what is to happen when a player holds the game.
 Player.prototype.hold = function () {
+    this.active = false;
     this.overallScore += this.turnTotal;
     if (this.overallScore >= 100) {
         alert("Game Over. You win!!!!");
@@ -35,15 +48,12 @@ Player.prototype.hold = function () {
     }
     return this.overallScore;
 };
-
 //Reset the form input fields
 function resetFields() {
     $("input#player1Name").val("");
     $("input#player2Name").val("");
-  $('button#playButton').prop('disabled', true);
+    $('button#playButton').prop('disabled', true);
 };
-
-
 //Front End Logic
 $(document).ready(function () {
     //Makes the 'Rules' title clickeable and the rules themselves hideable.
@@ -52,7 +62,6 @@ $(document).ready(function () {
     });
     //Actions when player enters name
     $("#playerNames").submit(function (event) {
-
         event.preventDefault();
         //Store the players names in variables and output them.
         var gamer1 = $("#player1Name").val();
@@ -68,16 +77,17 @@ $(document).ready(function () {
         $(".player2NameOutput").text(player2.name);
         //Clear the input fields
         resetFields();
-
     });
-
-
     //Display dice roll number and turn total when the roll button is clicked
     //roll button for player1
     $('.roll1').click(function (event) {
         event.preventDefault();
+        //Activate Gaming Area
+        player1.active = true;
+        console.log('Having rolled Player 1 is: ' + player1.active);
+        activeUser();
         //call the function to generate random numbers
-        player1.roll()
+        player1.roll();
         //display the rolled dice number
         $('.diceRoll1').text(player1.diceRoll);
         //display the turn score (temporary score)
@@ -86,6 +96,10 @@ $(document).ready(function () {
     //roll button for player2
     $('.roll2').click(function (event) {
         event.preventDefault();
+        //Activate Gaming Area
+        player2.active = true;
+        console.log('Having rolled Player 2 is: ' + player2.active);
+        activeUser();
         //call the function to generate random numbers
         player2.roll();
         //display the rolled dice number
@@ -97,6 +111,10 @@ $(document).ready(function () {
     //hold button for player1
     $('.hold1').click(function (event) {
         event.preventDefault();
+        //Disable gaming area
+         player1.active = false;
+        console.log('Having held Player 1 is: ' + player1.active);
+        activeUser();
         //call the function to add the turn score to the overall score
         player1.hold();
         //display the overall score
@@ -104,14 +122,14 @@ $(document).ready(function () {
         //Clear turn score and total score
         $('.diceRoll1').text("");
         $('.turnScore1').text("");
-        $('.player1Area').children().prop('disabled', true);
-        $('.player2Area').children().prop('disabled', false);
-        //$("#dcacl").children().prop('disabled',true);
-
     });
     //hold button for player2
     $('.hold2').click(function (event) {
         event.preventDefault();
+        //Disable gaming area
+        player2.active = false;
+        console.log('Having held Player 2 is: ' + player2.active);
+        activeUser();
         //call the function to add the turn score to the overall score
         player2.hold();
         //display the overall score
@@ -119,9 +137,6 @@ $(document).ready(function () {
         //Clear turn score and total score
         $('.diceRoll2').text("");
         $('.turnScore2').text("");
-        $('.player2Area').children().prop('disabled', true);
-  $('.player1Area').children().prop('disabled', false);
-
     });
 
 });
