@@ -5,19 +5,23 @@
     box-sizing: border-box;
     width: 100%;
     padding: 0px;
-    background-image: url(../assets/images/img15.jpg);
+    background-image: url(../assets/images/img17.jpeg);
     background-size: cover;
+        color: #001f75;
 }
 
 
 /*Styles for the Title Section*/
 
 #header {
-    background-color: #000b29;
+    background-color: rgba(255, 255, 255, 0.4);
     padding: 10px;
     margin: 0px;
     width: 100%;
     text-align: center;
+        border-radius: 0px 0px 20px 20px;
+    border-bottom: 1px solid #001f75;
+     box-shadow: 0px 0px 30px #ccc;
 }
 
 #header img {
@@ -28,7 +32,7 @@
 
 #header h1 {
     font-size: 45px;
-    color: white;
+    color: #1d3c90;
 }
 
 
@@ -45,8 +49,7 @@
 }
 
 #rulesHeader {
-    /*  background-color: aliceblue;*/
-    color: black;
+   
     padding: 0px;
     margin: 0px;
 }
@@ -75,7 +78,7 @@ p {
 
 #playButton {
     width: 20%;
-    margin-left: 35%;
+    margin-left: 40%;
     margin-top: 10px;
     background-color: #000b29;
 }
@@ -94,6 +97,7 @@ p {
 /*Styles for the Gaming Section*/
 
 #gamingArea {
+
     display: none;
     width: 80%;
     margin: 10px auto;
