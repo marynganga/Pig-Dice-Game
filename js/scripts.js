@@ -13,15 +13,15 @@ function Player(name, turnTotal, diceRoll, overallScore, active) {
 function activeUser() {
     if (player1.active === true || player2.active === false) {
         $('.player1Area').children().prop('disabled', false);
-         $('.player1Area').removeClass('disableGamingArea');
-        $('.player2Area').children().prop('disabled', true); 
+        $('.player1Area').removeClass('disableGamingArea');
+        $('.player2Area').children().prop('disabled', true);
         $('.player2Area').addClass('disableGamingArea');
-       
+
     } else {
         $('.player1Area').children().prop('disabled', true);
-         $('.player1Area').addClass('disableGamingArea');
+        $('.player1Area').addClass('disableGamingArea');
         $('.player2Area').children().prop('disabled', false);
-         $('.player2Area').removeClass('disableGamingArea');
+        $('.player2Area').removeClass('disableGamingArea');
     };
 };
 //Funtion on what is to happen when the dice is rolled.
@@ -52,11 +52,20 @@ Player.prototype.hold = function () {
     console.log('on adding the turnTotal to the overall score, the turn total becomes: ' + this.turnTotal);
     return this.overallScore;
 };
-//Function to reset the form input fields.
+//Function to reset the form input fields, the opacity from the gaming area and the scores.
 function resetFields() {
     $("input#player1Name").val("");
     $("input#player2Name").val("");
-    $('button#playButton').prop('disabled', true);
+    $('.player1Area').removeClass('disableGamingArea');
+    $('.player2Area').removeClass('disableGamingArea');
+    this.diceRoll = 0;
+    this.turnTotal = 0;
+    this.overallScore = 0;
+    var outputs = [$('.diceRoll1'),$('.turnScore1'),$('.overallScore1'), $('.diceRoll2'),$('.turnScore2'),$('.overallScore2')];
+    outputs.forEach(function(output){
+        output.text(0);
+    })
+
 };
 //Front End Logic
 $(document).ready(function () {
@@ -66,10 +75,14 @@ $(document).ready(function () {
     //Actions when player enters name
     $("#playerNames").submit(function (event) {
         event.preventDefault();
-         $("#rulesDefinitions").hide();
-        $("form").hide(); 
+        $("#rulesDefinitions").hide();
+        $("form").hide();
         $(".newGame").show();
-        
+        $(".newGame").click(function () { //Makes the 'New Game' title clickeable and the form reappear.
+            $("form").show();
+            $(".newGame").hide();
+            resetFields();
+        });
         $('#gamingArea').show();
         //Store the players names in variables.
         var gamer1 = $("#player1Name").val();
@@ -111,8 +124,8 @@ $(document).ready(function () {
         player1.hold(); //call the function to add the turn score to the overall score
         $('.overallScore1').text(player1.overallScore); //display the overall score
         //Clear turn score and total score
-        $('.diceRoll1').text("");
-        $('.turnScore1').text("");
+        $('.diceRoll1').text(0);
+        $('.turnScore1').text(0);
     });
     $('.hold2').click(function (event) { //hold button for player2
         event.preventDefault();
@@ -122,8 +135,8 @@ $(document).ready(function () {
         player2.hold(); //call the function to add the turn score to the overall score
         $('.overallScore2').text(player2.overallScore); //display the overall score
         //Clear turn score and total score
-        $('.diceRoll2').text("");
-        $('.turnScore2').text("");
+        $('.diceRoll2').text(0);
+        $('.turnScore2').text(0);
     });
 
 });
