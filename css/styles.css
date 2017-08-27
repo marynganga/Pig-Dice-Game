@@ -1,4 +1,5 @@
 /*Styles for the whole body*/
+
 .container {
     font-size: 16px;
     box-sizing: border-box;
@@ -7,7 +8,10 @@
     background-image: url(../assets/images/img15.jpg);
     background-size: cover;
 }
+
+
 /*Styles for the Title Section*/
+
 #header {
     background-color: #000b29;
     padding: 10px;
@@ -15,21 +19,26 @@
     width: 100%;
     text-align: center;
 }
+
 #header img {
     width: 300px;
     height: 150px;
     padding-right: 30px;
 }
+
 #header h1 {
     font-size: 45px;
     color: white;
 }
+
+
 /*Styles for the Rules Section*/
+
 #rulesSection {
-    background-color: rgba(238,238,238,0.4);
+    background-color: rgba(238, 238, 238, 0.4);
     margin: auto;
     box-shadow: 0px 0px 10px #ccc;
-    padding: 5px 10px 5px 10px;
+    padding: 2px 10px 2px 10px;
     width: 70%;
     border: 2px solid #ddd;
     border-radius: 6px;
@@ -50,22 +59,25 @@ li,
 p {
     font-size: 16px;
 }
+
+
 /*Styles for the Players Names Form*/
+
 #playingForm {
-    background-color: rgba(238,238,238,0.4);
+    background-color: rgba(238, 238, 238, 0.4);
     margin: auto;
     box-shadow: 0px 0px 10px #ccc;
-    padding: 5px 10px 5px 10px;
+    padding: 2px 10px 2px 10px;
     width: 70%;
     border: 2px solid #ddd;
     border-radius: 6px;
 }
 
-.btn-primary {
-    margin: auto;
-    text-align: center;
-    margin: 10px auto;
-    left: 45%;
+#playButton {
+    width: 20%;
+    margin-left: 35%;
+    margin-top: 10px;
+    background-color: #000b29;
 }
 
 .player1Area,
@@ -77,7 +89,10 @@ p {
     padding-top: 20px;
     text-align: center;
 }
+
+
 /*Styles for the Gaming Section*/
+
 #gamingArea {
     display: none;
     width: 80%;
