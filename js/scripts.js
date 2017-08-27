@@ -46,23 +46,24 @@ Player.prototype.hold = function () {
     if (this.overallScore >= 100) {
         alert("Game Over. You win!!!!");
     } else {
-        alert("Your turn is over!");
+        return false;
     }
     this.turnTotal = 0;
-    console.log('on adding the turnTotal to the overall score, the turn total becomes: ' + this.turnTotal);
     return this.overallScore;
 };
-//Function to reset the form input fields, the opacity from the gaming area and the scores.
+//Function to reset the form input fields, re-enable the buttons, remove the opacity from the gaming area and reset the scores to 0.
 function resetFields() {
     $("input#player1Name").val("");
     $("input#player2Name").val("");
+    $('.player1Area').children().prop('disabled', false);
+    $('.player2Area').children().prop('disabled', false);
     $('.player1Area').removeClass('disableGamingArea');
     $('.player2Area').removeClass('disableGamingArea');
     this.diceRoll = 0;
     this.turnTotal = 0;
     this.overallScore = 0;
-    var outputs = [$('.diceRoll1'),$('.turnScore1'),$('.overallScore1'), $('.diceRoll2'),$('.turnScore2'),$('.overallScore2')];
-    outputs.forEach(function(output){
+    var outputs = [$('.diceRoll1'), $('.turnScore1'), $('.overallScore1'), $('.diceRoll2'), $('.turnScore2'), $('.overallScore2')];
+    outputs.forEach(function (output) {
         output.text(0);
     })
 
