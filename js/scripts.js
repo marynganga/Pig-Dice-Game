@@ -63,8 +63,11 @@ $(document).ready(function () {
         //Clear the input fields
         resetFields();
     });
-
-    $('.roll').click(function (event) {
+    
+  
+//Display dice roll number and turn total when the roll button is clicked
+    //roll button for player1
+    $('.roll1').click(function (event) {
         event.preventDefault();
         //call the function to generate random numbers
         //display the rolled dice number
@@ -73,13 +76,32 @@ $(document).ready(function () {
         $('.turnScore1').text(player1.turnTotal);
 
     });
-    
+     //roll button for player2
+    $('.roll2').click(function (event) {
+        event.preventDefault();
+        //call the function to generate random numbers
+        //display the rolled dice number
+        $('.diceroll2').text(player2.roll());
+        //display the turn score (temporary score)
+        $('.turnScore2').text(player2.turnTotal);
+
+    });
+    //Display overall score when the hold button is clicked
+    //hold button for player1
      $('.hold1').click(function (event) {
         event.preventDefault();
     //call the function to add the turn score to the overall score
          player1.hold();
        //display the overall score
-        $('.overallScore1').text(player1.overallScore);  
+        $('.overallScore1').text(player1.overallScore); 
+     });
+     //hold button for player2
+     $('.hold2').click(function (event) {
+        event.preventDefault();
+    //call the function to add the turn score to the overall score
+         player2.hold();
+       //display the overall score
+        $('.overallScore2').text(player2.overallScore); 
      });
 
 });
