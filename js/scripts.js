@@ -62,7 +62,9 @@ $(document).ready(function () {
     $("#playerNames").submit(function (event) {
         event.preventDefault();
          $("#rulesDefinitions").hide();
-        $("form .row").hide();
+        $("form").hide(); 
+        $(".newGame").show();
+        
         $('#gamingArea').show();
         //Store the players names in variables.
         var gamer1 = $("#player1Name").val();

@@ -9,6 +9,18 @@
     background-size: cover;
         color: #001f75;
 }
+.btn{
+   font-size: 22.5px;
+    background-color: #001f75;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #777;
+    color: white;
+}
+.btn:hover{
+     box-shadow: 0px 0px 10px #eee;
+    color: blueviolet;
+}
+
 
 
 /*Styles for the Title Section*/
@@ -32,7 +44,8 @@
 
 #header h1 {
     font-size: 45px;
-    color: #1d3c90;
+    color: #001f75;
+    font-weight: bolder;
 }
 
 
@@ -46,26 +59,36 @@
     width: 70%;
     border: 2px solid #ddd;
     border-radius: 6px;
+    font-size: 16px;
+
 }
 
 #rulesHeader {
-   
     padding: 0px;
     margin: 0px;
 }
 
 #rulesHeader:hover {
-    color: blueviolet;
+    color: white;
+}
+#rules{
+    border-bottom: 1px solid black;
+     font-size: 20px;
+    font-weight: bolder;
 }
 
-li,
-p {
-    font-size: 16px;
-}
 
 
 /*Styles for the Players Names Form*/
-
+.newGame{
+    display: none;
+     border-bottom: 1px solid black;
+     font-size: 20px;
+    font-weight: bolder;
+}
+.newGame:hover {
+    color: white;
+}
 #playingForm {
     background-color: rgba(238, 238, 238, 0.4);
     margin: auto;
@@ -75,14 +98,29 @@ p {
     border: 2px solid #ddd;
     border-radius: 6px;
 }
-
-#playButton {
-    width: 20%;
-    margin-left: 40%;
-    margin-top: 10px;
-    background-color: #000b29;
+form h3{
+     border-bottom: 1px solid black;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
+button#playButton {
+    width: 16%;
+    margin-left: 42%;
+    margin-top: 10px;
+}
+
+
+
+
+/*Styles for the Gaming Section*/
+
+#gamingArea {
+    display: none;
+    width: 80%;
+    margin: 10px auto;
+    font-size: 22.5px; 
+}
 .player1Area,
 .player2Area {
     background-color: transparent;
@@ -91,14 +129,30 @@ p {
     padding-bottom: 20px;
     padding-top: 20px;
     text-align: center;
+    color: white;
+    
 }
-
-
-/*Styles for the Gaming Section*/
-
-#gamingArea {
-
-    display: none;
-    width: 80%;
-    margin: 10px auto;
+#gamingArea img{
+    border: 5px solid #001f75;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px #001f75;
+    width: 200px;
+    height: 210px;
 }
+.player1NameOutput,.player2NameOutput{
+    font-weight: bold;
+    font-size: 30px;
+    
+}
+/*
+#gamingArea .btn{
+   font-size: 22.5px;
+    background-color: #001f75;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #777;
+}
+#gamingArea .btn:hover{
+     box-shadow: 0px 0px 10px #eee;
+    color: blueviolet;
+}
+*/
