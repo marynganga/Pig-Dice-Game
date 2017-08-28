@@ -27,6 +27,7 @@ function activeUser() {
 Player.prototype.roll = function () {
     var randomNo = Math.floor((Math.random() * 6) + 1); //Random no generator from 1-6.
     this.diceRoll = randomNo;
+    activeUser();
     if (randomNo === 1) {
         this.turnTotal = 0;
         this.diceRoll = 1;
