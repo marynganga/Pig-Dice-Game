@@ -16,7 +16,7 @@ function activeUser() {
         $('.player1Area').removeClass('disableGamingArea');
         $('.player2Area').children().prop('disabled', true);
         $('.player2Area').addClass('disableGamingArea');
-    } else { 
+    } else {
         $('.player1Area').children().prop('disabled', true);
         $('.player1Area').addClass('disableGamingArea');
         $('.player2Area').children().prop('disabled', false);
@@ -27,6 +27,7 @@ function activeUser() {
 Player.prototype.roll = function () {
     var randomNo = Math.floor((Math.random() * 6) + 1); //Random no generator from 1-6.
     this.diceRoll = randomNo;
+    activeUser();
     if (randomNo === 1) {
         this.turnTotal = 0;
         this.diceRoll = 1;
@@ -44,7 +45,7 @@ Player.prototype.roll = function () {
             $('.player2Area').addClass('disableGamingArea');
             $('.player1Area').children().prop('disabled', false);
             $('.player1Area').removeClass('disableGamingArea');
-        }else{
+        } else {
             console.log("not working");
         }
         return alert("Oops you got a 1. Your turn is over!");
@@ -59,10 +60,13 @@ Player.prototype.hold = function () {
     this.overallScore += this.turnTotal;
     if (this.overallScore >= 100) {
         alert("Game Over. You win!!!!");
+        resetFields();
+        alert('To play with a new partner click New Game.')
+
     } else {
         return false;
     }
-    this.turnTotal = 0;
+    console.log('the turn total is: ' + this.turnTotal);
     return this.overallScore;
 };
 //Function to reset the form input fields, re-enable the buttons, remove the opacity from the gaming area and reset the scores to 0.
@@ -73,9 +77,12 @@ function resetFields() {
     $('.player2Area').children().prop('disabled', false);
     $('.player1Area').removeClass('disableGamingArea');
     $('.player2Area').removeClass('disableGamingArea');
-    this.diceRoll = 0;
-    this.turnTotal = 0;
-    this.overallScore = 0;
+    var thePlayers = [player1, player2];
+    thePlayers.forEach(function (player) {
+        player.diceRoll = 0;
+        player.turnTotal = 0;
+        player.overallScore = 0;
+    })
     var outputs = [$('.diceRoll1'), $('.turnScore1'), $('.overallScore1'), $('.diceRoll2'), $('.turnScore2'), $('.overallScore2')];
     outputs.forEach(function (output) {
         output.text(0);
@@ -95,6 +102,7 @@ $(document).ready(function () {
         $(".newGame").show();
         $(".newGame").click(function () { //Makes the 'New Game' title clickeable and the form reappear.
             $("form").show();
+            $('#gamingArea').hide();
             $(".newGame").hide();
             resetFields();
         });
@@ -138,9 +146,11 @@ $(document).ready(function () {
         player2.active = true;
         player1.hold(); //call the function to add the turn score to the overall score
         $('.overallScore1').text(player1.overallScore); //display the overall score
-        //Clear turn score and total score
-        $('.diceRoll1').text(0);
-        $('.turnScore1').text(0);
+        //Clear dice roll and turn score
+        player1.diceRoll = 0;
+        player1.turnTotal = 0;
+        $('.diceRoll1').text(player1.diceRoll);
+        $('.turnScore1').text(player1.turnTotal);
     });
     $('.hold2').click(function (event) { //hold button for player2
         event.preventDefault();
@@ -150,8 +160,10 @@ $(document).ready(function () {
         player2.hold(); //call the function to add the turn score to the overall score
         $('.overallScore2').text(player2.overallScore); //display the overall score
         //Clear turn score and total score
-        $('.diceRoll2').text(0);
-        $('.turnScore2').text(0);
+        player2.diceRoll = 0;
+        player2.turnTotal = 0;
+        $('.diceRoll2').text(player2.diceRoll);
+        $('.turnScore2').text(player2.turnTotal);
     });
 
 });
