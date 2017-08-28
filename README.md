@@ -24,6 +24,7 @@ The rules of the game are:
  * Input:
  
         'Roll' button is clicked
+        Dice Score: 3 
  * Output:
   
          Turn Score: 6
@@ -41,6 +42,7 @@ The rules of the game are:
  * Input:
  
         'Roll' button is clicked
+        Dice Score: 2
  * Output:
   
          Turn Score: 5
@@ -54,29 +56,23 @@ The rules of the game are:
           Turn Score: 4
           Total Score: 9        
           
-6. If a player's turn score is a 1, their total score will be reduced to 0.
+6. If a player's dice score is a 1, their turn score will be reduced to 0.
   * Input:
       
             'Roll' button is clicked
-            Turn Scroe: 0
+            Dice Score: 1
    * Output: 
             
-            Previous Total Score: 45
-            New Total Score: 0
+            Previous Turn Score: 30
+            New Turn Score: 0
     
-7. It allows a player a maximum of 6 consecutive plays, then moves to the next player.
-   * Input: 
-    
-            Player1: 'Roll' dice 6 consecutive times
-   * Output:
- 
-            Switches to Player2
+
           
 ## Setup/Installation
 To view the website, click [Pig Dice Game](https://marynganga.github.io/Pig-Dice-Game) or copy (https://marynganga.github.io/Pig-Dice-Game) to your browser and load it.
 
 ## Known Bugs
-There are no known bugs.
+No known bugs.
 
 ## Technologies Used
 * HTML
