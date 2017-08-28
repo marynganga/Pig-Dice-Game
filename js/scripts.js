@@ -59,6 +59,9 @@ Player.prototype.hold = function () {
     this.overallScore += this.turnTotal;
     if (this.overallScore >= 100) {
         alert("Game Over. You win!!!!");
+        resetFields();
+        alert('To play with a new partner click New Game.')
+
     } else {
         return false;
     }
@@ -73,9 +76,12 @@ function resetFields() {
     $('.player2Area').children().prop('disabled', false);
     $('.player1Area').removeClass('disableGamingArea');
     $('.player2Area').removeClass('disableGamingArea');
-    this.diceRoll = 0;
-    this.turnTotal = 0;
-    this.overallScore = 0;
+    var thePlayers = [player1, player2];
+    thePlayers.forEach(function (player) {
+        player.diceRoll = 0;
+        player.turnTotal = 0;
+        player.overallScore = 0;
+    })
     var outputs = [$('.diceRoll1'), $('.turnScore1'), $('.overallScore1'), $('.diceRoll2'), $('.turnScore2'), $('.overallScore2')];
     outputs.forEach(function (output) {
         output.text(0);
@@ -95,6 +101,7 @@ $(document).ready(function () {
         $(".newGame").show();
         $(".newGame").click(function () { //Makes the 'New Game' title clickeable and the form reappear.
             $("form").show();
+            $('#gamingArea').hide();
             $(".newGame").hide();
             resetFields();
         });
