@@ -138,7 +138,7 @@ $(document).ready(function () {
         player2.active = true;
         player1.hold(); //call the function to add the turn score to the overall score
         $('.overallScore1').text(player1.overallScore); //display the overall score
-        //Clear turn score and total score
+        //Clear dice roll andturn score
         $('.diceRoll1').text(0);
         $('.turnScore1').text(0);
     });
